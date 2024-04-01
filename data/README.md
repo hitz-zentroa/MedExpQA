@@ -1,1 +1,1 @@
-Download augmented casimedicos dataset here. `./data/casimedicos/*.jsonl` 
+Download the datasets [here](https://huggingface.co/datasets/HiTZ/MedExpQA) and place the `.jsonl` files in `./data/casimedicos/*.jsonl`. 
