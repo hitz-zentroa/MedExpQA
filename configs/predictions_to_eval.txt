@@ -1,0 +1,6 @@
+out/experiments/finetuned/en_LLaMA2_13b_ragccmax_en
+out/experiments/finetuned/es_LLaMA2_13b_ragccmax_en
+out/experiments/finetuned/en_BioMistral_7b_ragccmax_en
+out/experiments/finetuned/en_Mistral_7b_ragccmax_en
+out/experiments/finetuned/es_BioMistral_7b_ragccmax_en
+out/experiments/finetuned/es_Mistral_7b_ragccmax_en

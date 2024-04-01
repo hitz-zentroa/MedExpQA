@@ -1,0 +1,98 @@
+#Training args
+model_name_or_path: mistralai/Mistral-7B-v0.1
+torch_dtype: bfloat16
+use_lora: true
+quantization: 4
+quantization_inference: null
+gradient_checkpointing: true
+force_auto_device_map: false
+use_flash_attention: false
+#attn_implementation: flash_attention_2
+
+# dataset arguments
+train_files:
+  - data/casimedicos/train.es.casimedicos.rag.jsonl
+validation_files:
+  - data/casimedicos/dev.es.casimedicos.rag.jsonl
+test_files:
+  - data/casimedicos/test.es.casimedicos.rag.jsonl
+max_seq_length: 2048
+generation_max_length: 2098
+#max_new_tokens: 50
+ignore_pad_token_for_loss: true
+prompt_loss_weight: 0.0
+
+grounding_entities:
+    - explanation_other
+grounding_langs:
+  - en
+goal: "ans_idx"
+mark_correct: false
+
+
+# checkpoint settings
+output_dir: out/experiments/zeroshot/es_Mistral_7b_other_en
+overwrite_output_dir: true
+load_best_model_at_end: false
+#metric_for_best_model: eval_dev.es.casimedicos.grounded_loss
+greater_is_better: false
+save_strategy: "epoch" # "no" to save last model
+#save_steps: 1000
+save_total_limit: 100
+
+# evaluation
+do_train: false
+do_eval: false
+do_predict: true
+evaluation_strategy: "epoch"
+#eval_steps: 500
+eval_delay: 0
+predict_with_generate: true
+evaluate_all_checkpoints: false
+
+# batch size: 16 batch size * 1 gradaccum * 1 GPUs = 16
+per_device_train_batch_size: 16
+per_device_eval_batch_size: 8
+gradient_accumulation_steps: 1
+generation_num_beams: 1
+
+#do_sample: false
+#temperature: 0.7
+#top_k: 20
+#top_p: 0.90
+#repetition_penalty: 1.2
+
+# optimizer settings
+optim: adamw_torch_fused
+learning_rate: 0.00015
+weight_decay: 0.0
+num_train_epochs: 10
+lr_scheduler_type: cosine
+warmup_ratio: 0.03
+adam_epsilon: 1e-7
+
+# lora settings
+lora_r: 8
+lora_alpha: 16
+lora_dropout: 0.05
+lora_target_modules:
+  - all
+
+# reporting
+logging_strategy: steps
+logging_first_step: true
+logging_steps: 25
+report_to: wandb
+#report_to: none
+run_name: "es_casimedicos_Mistral_7b_other"
+disable_tqdm: false
+
+# hub settings
+push_to_hub: false
+resume_from_checkpoint: false
+
+# performance
+bf16: true
+fp16: false
+torch_compile: false
+ddp_find_unused_parameters: false
