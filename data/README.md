@@ -1,0 +1,1 @@
+Download augmented casimedicos dataset here. `./data/casimedicos/*.jsonl` 
