@@ -18,8 +18,8 @@ pip install -r requirements.txt
 ## Datasets
 Download the datasets [here](https://huggingface.co/datasets/HiTZ/MedExpQA) and place the `.jsonl` files in `./data/casimedicos/`.
 
-%## Model checkpoints
-%Download model LoRA adapter checkpoints [here]() and place each model's folder in `./out/experiments/finetuned/`.
+<!--- ## Model checkpoints -->
+<!--- Download model LoRA adapter checkpoints [here]() and place each model's folder in `./out/experiments/finetuned/`. -->
 
 ## Configuration codenames
 These are the internal codenames for grounding configurations:
@@ -44,9 +44,9 @@ Inference on the test set for each checkpoint will be performed and resulting pr
 
 ## Performing inference
 You can use one of the fine-tuning configurations under the `fine_tuning` config folder. Set `do_train: false` and 
-`do_eval: false`. %To load the adapter you have two options:
-%1. Load the adapter directly from HuggingFace and adding the `lora_weights_name_or_path` parameter to the configuration you want to launch. For example: `lora_weights_name_or_path: HiTZ/MedExpQA/Mistral-7b-rag-max-EN`
-%2. Download the [model LoRA adapter checkpoints]() and leave the checkpoints in `out/experiments/finetuned/`.
+`do_eval: false`. <!--- To load the adapter you have two options: -->
+<!--- 1. Load the adapter directly from HuggingFace and adding the `lora_weights_name_or_path` parameter to the configuration you want to launch. For example: `lora_weights_name_or_path: HiTZ/MedExpQA/Mistral-7b-rag-max-EN` -->
+<!--- 2. Download the [model LoRA adapter checkpoints]() and leave the checkpoints in `out/experiments/finetuned/`. -->
 Inferences are launched in the same way as trainings:
 ```
 export PYTHONPATH="$PWD/src"
